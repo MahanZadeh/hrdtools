@@ -45,7 +45,7 @@ import_vcf <- function(vcfPath, genomeVersion='hg19') {
 
 sanitize_vranges <- function(vr) {
     genome = getBSgenome('BSgenome.Hsapiens.UCSC.hg19')
-    seqlevels(vr, force=TRUE) <- seqlevels(vr)[1:24]
+    seqlevels(vr) <- seqlevels(vr)[1:24]
     if (identical(seqlevels(vr), seqlevels(genome)[1:24])) {
     } else if (identical(paste0('chr', seqlevels(vr)), seqlevels(genome)[1:24])) {
         seqlevels(vr) <- paste0('chr', seqlevels(vr))
